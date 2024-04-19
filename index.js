@@ -1,3 +1,4 @@
+
 // Freelancer array -- name, occupation, starting price
 const freelancers = [
     {name: "Valeria", occupation: "Private Chef", price: 100},
@@ -17,17 +18,18 @@ function addFreelancer(freelancers) {
         // selects the element we want to target to create new row with DOM
         const table = document.querySelector("table")
         // removes the first element in freelancers array and then returns the removed element
-        const currentFreelancers = freelancers.shift();
+        const currentFreelancers = freelancers.pop();
         // creates a new listing in the table 
         const newListing = document.createElement("tr")
-        newListing.textContent = `${currentFreelancers.name} ${currentFreelancers.occupation} ${currentFreelancers.price}`
+        newListing.innerHTML = `<td>${currentFreelancers.name}</td> <td>${currentFreelancers.occupation}</td> <td>${currentFreelancers.price}</td>`
         table.append(newListing);
         // Updates the average starting price when new listing is created
         // FIX ME: figure out why listings dont display
+        
 
 }
 // New listing appears every 3 seconds
-const freelancerInterval = setInterval(addFreelancer, 3000)
+const freelancerInterval = setInterval(() => addFreelancer(freelancers), 3000)
 
 // TODO: message displays average starting price of all freelancers
 function totalAveragePrice() {
